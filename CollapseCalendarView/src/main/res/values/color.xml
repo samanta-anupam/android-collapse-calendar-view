@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="blue_dark">#00aeef</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="Grey300" type="color">#E0E0E0</color>
+    <color name="Grey400" type="color">#BDBDBD</color>
+    <color name="Grey500" type="color">#9E9E9E</color>
+
+    <color name="Blue500" type="color">#2196F3</color>
+
+    <color name="highlight_orange">#ffb715</color>
+    <color name="highlight_orange_translucent">#80ffb715</color>
+</resources>

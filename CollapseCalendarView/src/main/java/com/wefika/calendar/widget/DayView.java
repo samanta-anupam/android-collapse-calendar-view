@@ -11,9 +11,11 @@ import com.wefika.calendar.R;
  */
 public class DayView extends TextView {
 
-    private static final int[] STATE_CURRENT = { R.attr.state_current };
+    private static final int[] STATE_CURRENT = {R.attr.state_current};
+    private static final int[] STATE_HIGHLIGHTED = {R.attr.state_highlighted};
 
     private boolean mCurrent;
+    private boolean mHighlighted;
 
     public DayView(Context context) {
         super(context);
@@ -38,12 +40,27 @@ public class DayView extends TextView {
         return mCurrent;
     }
 
+    public void setHighlighted(boolean highlighted) {
+        if (mHighlighted != highlighted) {
+            mHighlighted = highlighted;
+            refreshDrawableState();
+        }
+    }
+
+    public boolean isHighlighted() {
+        return mHighlighted;
+    }
+
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {
-        final int[] state = super.onCreateDrawableState(extraSpace + 1);
+        final int[] state = super.onCreateDrawableState(extraSpace + 2);
 
         if (mCurrent) {
             mergeDrawableStates(state, STATE_CURRENT);
+        }
+        if(mHighlighted)
+        {
+            mergeDrawableStates(state, STATE_HIGHLIGHTED);
         }
 
         return state;

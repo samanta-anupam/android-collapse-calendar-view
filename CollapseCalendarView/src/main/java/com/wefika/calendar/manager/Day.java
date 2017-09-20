@@ -1,5 +1,4 @@
 package com.wefika.calendar.manager;
-
 import android.support.annotation.NonNull;
 
 import org.joda.time.LocalDate;

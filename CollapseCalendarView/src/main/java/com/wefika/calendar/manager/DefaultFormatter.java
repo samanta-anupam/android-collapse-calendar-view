@@ -2,7 +2,7 @@ package com.wefika.calendar.manager;
 
 import android.support.annotation.NonNull;
 
-import com.wefika.calendar.manager.CalendarUnit.CalendarType;
+import com.wefika.calendar.manager.Formatter;
 
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
@@ -18,7 +18,7 @@ public class DefaultFormatter implements Formatter {
     private final DateTimeFormatter monthHeaderFormatter;
 
     public DefaultFormatter() {
-        this("E", "'week' w", "MMMM yyyy");
+        this("E", "MMMM yyyy", "MMMM yyyy");
     }
 
     public DefaultFormatter(@NonNull String dayPattern, @NonNull String weekPattern, @NonNull String monthPattern) {
@@ -27,11 +27,13 @@ public class DefaultFormatter implements Formatter {
         monthHeaderFormatter = DateTimeFormat.forPattern(monthPattern);
     }
 
-    @Override public String getDayName(@NonNull LocalDate date) {
+    @Override
+    public String getDayName(@NonNull LocalDate date) {
         return date.toString(dayFormatter);
     }
 
-    @Override public String getHeaderText(@CalendarType int type, @NonNull LocalDate from, @NonNull LocalDate to) {
+    @Override
+    public String getHeaderText(@CalendarUnit.CalendarType int type, @NonNull LocalDate from, @NonNull LocalDate to) {
         switch (type) {
             case CalendarUnit.TYPE_WEEK:
                 return from.toString(weekHeaderFormatter);

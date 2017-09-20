@@ -10,13 +10,20 @@ import org.joda.time.LocalDate;
  */
 public class CalendarManager {
 
-    @NonNull private State mState;
-    @NonNull private RangeUnit mUnit;
-    @NonNull private LocalDate mSelected;
-    @NonNull private final LocalDate mToday;
-    @Nullable private LocalDate mMinDate;
-    @Nullable private LocalDate mMaxDate;
-    @NonNull private Formatter formatter;
+    @NonNull
+    private State mState;
+    @NonNull
+    private RangeUnit mUnit;
+    @NonNull
+    private LocalDate mSelected;
+    @NonNull
+    private final LocalDate mToday;
+    @Nullable
+    private LocalDate mMinDate;
+    @Nullable
+    private LocalDate mMaxDate;
+    @NonNull
+    private Formatter formatter;
 
     private LocalDate mActiveMonth;
 
@@ -26,7 +33,7 @@ public class CalendarManager {
     }
 
     public CalendarManager(@NonNull LocalDate selected, @NonNull State state, @Nullable LocalDate minDate,
-            @Nullable LocalDate maxDate, @Nullable Formatter formatter) {
+                           @Nullable LocalDate maxDate, @Nullable Formatter formatter) {
         mToday = LocalDate.now();
         mState = state;
 
@@ -54,6 +61,17 @@ public class CalendarManager {
         }
     }
 
+    public boolean setActiveDay(@NonNull LocalDate date) {
+        if (!mSelected.isEqual(date)) {
+            mUnit.deselect(mSelected);
+            mSelected = date;
+            mUnit.select(mSelected);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @NonNull
     public LocalDate getSelectedDay() {
         return mSelected;
@@ -72,33 +90,40 @@ public class CalendarManager {
         return mUnit.hasPrev();
     }
 
-    public boolean next() {
+    public boolean next(boolean isWeek) {
 
         boolean next = mUnit.next();
         mUnit.select(mSelected);
-
         setActiveMonth(mUnit.getFrom());
+        if (!isWeek)
+            selectDay(getSelectedDay().plusMonths(1));
+        else
+            selectDay(getSelectedDay().plusWeeks(1));
+
 
         return next;
     }
 
-    public boolean prev() {
+    public boolean prev(boolean isWeek) {
 
         boolean prev = mUnit.prev();
         mUnit.select(mSelected);
-
         setActiveMonth(mUnit.getTo());
+        if (!isWeek)
+            selectDay(getSelectedDay().plusMonths(-1));
+        else
+            selectDay(getSelectedDay().plusWeeks(-1));
+
 
         return prev;
     }
 
     /**
-     *
      * @return index of month to focus to
      */
     public void toggleView() {
 
-        if(mState == State.MONTH) {
+        if (mState == State.MONTH) {
             toggleFromMonth();
         } else {
             toggleFromWeek();
@@ -171,7 +196,7 @@ public class CalendarManager {
     }
 
     public int getWeekOfMonth() {
-        if(mUnit.isInView(mSelected)) {
+        if (mUnit.isInView(mSelected)) {
             if (mUnit.isIn(mSelected)) { // TODO not pretty
                 return mUnit.getWeekInMonth(mSelected);
             } else if (mUnit.getFrom().isAfter(mSelected)) {
@@ -211,7 +236,8 @@ public class CalendarManager {
         mMaxDate = maxDate;
     }
 
-    @NonNull public Formatter getFormatter() {
+    @NonNull
+    public Formatter getFormatter() {
         return formatter;
     }
 

@@ -165,7 +165,7 @@ public class CalendarManagerTest {
 
         mCalendarManager.setUnit(unit);
 
-        boolean result = mCalendarManager.next();
+        boolean result = mCalendarManager.next(true);
 
         assertTrue(result);
 
@@ -188,7 +188,7 @@ public class CalendarManagerTest {
 
         mCalendarManager.setUnit(unit);
 
-        boolean result = mCalendarManager.prev();
+        boolean result = mCalendarManager.prev(true);
 
         assertTrue(result);
 

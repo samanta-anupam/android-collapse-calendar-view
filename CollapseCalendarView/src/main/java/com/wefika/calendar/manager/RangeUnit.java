@@ -3,6 +3,8 @@ package com.wefika.calendar.manager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.wefika.calendar.manager.CalendarUnit;
+
 import org.joda.time.DateTimeConstants;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;

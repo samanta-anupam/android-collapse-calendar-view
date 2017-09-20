@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.wefika.calendar.widget.DayView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.wekifa.calendar.widget.DayView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:background="@drawable/bg_btn_calendar"
-    android:textSize="18sp"
+    android:gravity="center"
+    android:paddingBottom="@dimen/calendar_days_margin_top"
+    android:paddingTop="@dimen/calendar_days_margin_top"
     android:textColor="@color/text_calendar"
-    android:paddingTop="4dp"
-    android:paddingBottom="4dp"/>
+    android:textSize="@dimen/font_extra_small"/>
