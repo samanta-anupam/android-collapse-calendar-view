@@ -9,7 +9,7 @@ their app. CollapseCalendarView can be toggled between month and week view.
 
 Example
 -------
-![Example screenshot](https://raw2.github.com/blazsolar/android-collapse-calendar-view/master/images/preview.gif)
+![Example screenshot](https://github.com/samanta-anupam/android-collapse-calendar-view/blob/develop/images/preview.gif)
 
 Source code with examples is included in repository.
 
